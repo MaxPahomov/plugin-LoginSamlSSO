@@ -1,0 +1,50 @@
+<div class="entityAddContainer">
+    <div id="ajaxLoadingDiv" ng-if="formCtrl.form.loading">
+        <div class="loadingPiwik">
+            <img src="plugins/Morpheus/images/loading-blue.gif" alt="Loading data...">Loading data...
+        </div>
+    </div>
+
+    <form ng-if="!formCtrl.initialLoad" name="samlSsoForm">
+        <table class="dataTable entityTable">
+            <thead>
+                <tr class="first">
+                    <th colspan="2">{{ 'LoginSamlSSO_Header' | translate }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="field in formCtrl.form.fields">
+                    <td class="first">{{ field.label }}</td>
+                    <td>
+                        <div ng-if="field.type === 'text'">
+                            <input ng-disabled="formCtrl.form.loading"
+                                   type="{{ field.type }}"
+                                   dynamic-name="{{ field.name }}"
+                                   size="28"
+                                   class="inp"
+                                   ng-model="field.value"
+                                   ng-required="!field.allowEmpty"
+                                   ng-pattern="formCtrl.form.testPattern(field)">
+                            <span class="help" title="{{ field.helpText }}"><img src="plugins/Morpheus/images/info.png"></span>
+                            <div ng-show="{{ 'samlSsoForm.'+field.name+'.$dirty && !samlSsoForm.'+field.name+'.$valid' }}" class="message-error">
+                                <span ng-show="{{ 'samlSsoForm.'+field.name+'.$error.required' }}">This field is required.</span>
+                                <span ng-show="{{ 'samlSsoForm.'+field.name+'.$error.pattern' }}">{{ field.errorMsgPattern }}</span>
+                            </div>
+                        </div>
+
+                        <div ng-if="field.type === 'select'">
+                            <select dynamic-name="{{ field.name }}" ng-model="field.value" ng-options="option for option in field.options"></select>
+                            <span class="help" title="{{ field.helpText }}"><img src="plugins/Morpheus/images/info.png"></span>
+                            <div ng-show="{{ 'samlSsoForm.'+field.name+'.$dirty && !samlSsoForm.'+field.name+'.$valid' }}" class="message-error">
+                                <span ng-show="{{ 'samlSsoForm.'+field.name+'.$error.required' }}">This field is required.</span>
+                                <span ng-show="{{ 'samlSsoForm.'+field.name+'.$error.pattern' }}">{{ field.errorMsgPattern }}</span>
+                            </div>
+                        </div>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button ng-click="formCtrl.saveConfig(samlSsoForm)" ng-disabled="samlSsoForm.$invalid" type="submit" class="submit">{{'LoginSamlSSO_SaveButton' | translate}}</button>
+    </form>
+</div>

@@ -1,0 +1,5 @@
+{
+  "require": {
+    "onelogin/php-saml": "master-dev"
+  }
+}

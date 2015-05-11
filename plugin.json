@@ -1,0 +1,16 @@
+{
+ "name": "LoginSamlSSO",
+ "version": "1.0.0",
+ "description": "",
+ "theme": false,
+ "require": {
+    "piwik": ">=2.11.2"
+ },
+ "authors": [
+     {
+         "name": "Marcin Czołnowski",
+         "email": "marcin@piwik.pro",
+         "homepage": "http://clearcode.cc"
+     }
+ ]
+}

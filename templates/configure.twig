@@ -1,0 +1,9 @@
+{% extends 'admin.twig' %}
+{% block content %}
+    <h2>{{ 'LoginSamlSSO_Title' | translate }}</h2>
+
+    <a href="index.php?module=LoginSamlSSO&action=getMetaData"
+       target="_blank">Print metadata</a>
+
+    <div id="saml-sso" data-saml-sso-configuration></div>
+{% endblock %}
