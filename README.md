@@ -45,7 +45,7 @@ The higher level, the smaller number of entries in logs. The highest level is er
 ### Saml SSO authentication process:
 
 1.  Redirect to Identity Provider (when "Log in with SSO" button on login screen is clicked)  
-    **Log leve**l: info  
+    **Log level**: info  
     **Log message**: Redirect to Identity Provider
 2.  Before response from Identity Provider has come  
     **Log level**: info  
