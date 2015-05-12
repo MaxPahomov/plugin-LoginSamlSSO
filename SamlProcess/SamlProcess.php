@@ -25,7 +25,7 @@ class SamlProcess implements SamlProcessInterface
     /**
      * @var OneLogin_Saml2_Auth
      */
-    private $saml2_Auth;
+    private $auth;
 
     /**
      * @var SamlProcessAttributesInterface
@@ -43,19 +43,19 @@ class SamlProcess implements SamlProcessInterface
     private $currentUrlWithoutQueryString;
 
     /**
-     * @param OneLogin_Saml2_Auth $saml2_Auth
+     * @param OneLogin_Saml2_Auth $auth
      * @param SamlProcessAttributesInterface $samlProcessAttributes
      * @param LoggerInterface $logger
      * @param null $currentUrlWithoutQueryString
      */
-    public function __construct(OneLogin_Saml2_Auth $saml2_Auth, SamlProcessAttributesInterface $samlProcessAttributes,
+    public function __construct(OneLogin_Saml2_Auth $auth, SamlProcessAttributesInterface $samlProcessAttributes,
                                 LoggerInterface $logger = null, $currentUrlWithoutQueryString = null)
     {
         if ($logger === null) {
             $logger = StaticContainer::get('Piwik\Plugins\LoginSamlSSO\Logger');
         }
 
-        $this->saml2_Auth = $saml2_Auth;
+        $this->auth = $auth;
         $this->samlProcessAttributes = $samlProcessAttributes;
         $this->logger = $logger;
         $this->currentUrlWithoutQueryString = $currentUrlWithoutQueryString;
@@ -75,22 +75,22 @@ class SamlProcess implements SamlProcessInterface
 
         try {
             $this->logger->info('Waiting for response from Identity Provider');
-            $this->saml2_Auth->processResponse();
+            $this->auth->processResponse();
             $this->logger->info('Identity Provider returned a response');
 
             if ($this->isError()) {
                 $this->logger->error('Library php-saml returned errors: "{errors}" with reason: "{reason}"', array(
                     'errors' => $this->getErrors(),
-                    'reason' => $this->saml2_Auth->getLastErrorReason()
+                    'reason' => $this->auth->getLastErrorReason()
                 ));
             }
 
-            if (!$this->saml2_Auth->isAuthenticated()) {
+            if (!$this->auth->isAuthenticated()) {
                 $result->setErrorMessage('User not authenticated.');
                 $this->logger->info('User not authenticated in Identity Provider');
             } else {
                 $this->logger->info('User authenticated in Identity Provider');
-                $attributesProcessed = $this->samlProcessAttributes->process($this->saml2_Auth->getAttributes(), $result);
+                $attributesProcessed = $this->samlProcessAttributes->process($this->auth->getAttributes(), $result);
 
                 if ($attributesProcessed) {
                     $result->setRedirectUrl($this->getUrlToIndexPage());
@@ -113,7 +113,7 @@ class SamlProcess implements SamlProcessInterface
     public function login()
     {
         $this->logger->info('Redirect to Identity Provider');
-        $this->saml2_Auth->login();
+        $this->auth->login();
     }
 
     /**
@@ -123,7 +123,7 @@ class SamlProcess implements SamlProcessInterface
      */
     private function getErrors()
     {
-        return implode(', ', $this->saml2_Auth->getErrors());
+        return implode(', ', $this->auth->getErrors());
     }
 
     /**
@@ -133,7 +133,7 @@ class SamlProcess implements SamlProcessInterface
      */
     private function isError()
     {
-        return count($this->saml2_Auth->getErrors()) ? true : false;
+        return count($this->auth->getErrors()) ? true : false;
     }
 
     /**
