@@ -22,9 +22,9 @@ return array(
             return array();
         }
         $classes = array(
-            'file'     => 'Piwik\Plugins\LoginSamlSSO\Logger\Handler\FileHandler',
-            'screen'   => 'Piwik\Plugins\LoginSamlSSO\Logger\Handler\WebNotificationHandler',
-            'database' => 'Piwik\Plugins\LoginSamlSSO\Logger\Handler\DatabaseHandler',
+            'file'     => 'Piwik\Plugins\Monolog\Handler\FileHandler',
+            'screen'   => 'Piwik\Plugins\Monolog\Handler\WebNotificationHandler',
+            'database' => 'Piwik\Plugins\Monolog\Handler\DatabaseHandler',
         );
         $writerNames = array_map('trim', $writerNames);
         $writers = array();
@@ -36,17 +36,17 @@ return array(
         return array_values($writers);
     }),
 
-    'Piwik\Plugins\LoginSamlSSO\Logger\Handler\FileHandler' => DI\object()
+    'Piwik\Plugins\Monolog\Handler\FileHandler' => DI\object()
         ->constructor(DI\link('samlsso.log.file.filename'), DI\link('samlsso.log.level'))
-        ->method('setFormatter', DI\link('Piwik\Plugins\LoginSamlSSO\Logger\Formatter\LineMessageFormatter')),
+        ->method('setFormatter', DI\link('Piwik\Plugins\Monolog\Formatter\LineMessageFormatter')),
 
-    'Piwik\Plugins\LoginSamlSSO\Logger\Handler\DatabaseHandler' => DI\object()
+    'Piwik\Plugins\Monolog\Handler\DatabaseHandler' => DI\object()
         ->constructor(DI\link('samlsso.log.level'))
-        ->method('setFormatter', DI\link('Piwik\Plugins\LoginSamlSSO\Logger\Formatter\LineMessageFormatter')),
+        ->method('setFormatter', DI\link('Piwik\Plugins\Monolog\Formatter\LineMessageFormatter')),
 
-    'Piwik\Plugins\LoginSamlSSO\Logger\Handler\WebNotificationHandler' => DI\object()
+    'Piwik\Plugins\Monolog\Handler\WebNotificationHandler' => DI\object()
         ->constructor(DI\link('samlsso.log.level'))
-        ->method('setFormatter', DI\link('Piwik\Plugins\LoginSamlSSO\Logger\Formatter\LineMessageFormatter')),
+        ->method('setFormatter', DI\link('Piwik\Plugins\Monolog\Formatter\LineMessageFormatter')),
 
     'samlsso.log.level' => DI\factory(function (ContainerInterface $c) {
         if ($c->has('ini.LoginSamlSSO.log_level')) {
@@ -84,7 +84,7 @@ return array(
         return $logPath;
     }),
 
-    'Piwik\Plugins\LoginSamlSSO\Logger\Formatter\LineMessageFormatter' => DI\object()
+    'Piwik\Plugins\Monolog\Formatter\LineMessageFormatter' => DI\object()
         ->constructor(DI\link('samlsso.log.format')),
 
     'samlsso.log.format' => DI\factory(function (ContainerInterface $c) {
