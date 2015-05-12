@@ -23,15 +23,13 @@ class MissingSamlServiceProviderAssertionConsumerServiceUrlException extends Con
         $baseUrlWithProtocol = Url::getCurrentScheme() . '://' . Url::getHost();
 
         parent::__construct(
-            'Missing SAML Service Provider Assertion Consumer Service (acs) url config entry. ' .
-            'Add this to your config.ini.php file to specify return url ' .
-            '(URL where to the SAML Response/SAML Assertion will be posted.) ' .
-            '<br /><pre>[LoginSamlSSO]<br />samlServiceProviderAssertionConsumerServiceUrl = ' .
+            'SAML Service Provider Assertion Consumer Service (acs) url',
+            'specified return url (URL where to the SAML Response/SAML Assertion will be posted)',
+            'samlServiceProviderAssertionConsumerServiceUrl',
             sprintf(
                 '"%s/plugins/LoginSamlSSO/web/index.php"',
                 $baseUrlWithProtocol
-            ) .
-            '</pre>'
+            )
         );
     }
 }

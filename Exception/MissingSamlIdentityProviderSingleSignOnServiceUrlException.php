@@ -19,9 +19,10 @@ class MissingSamlIdentityProviderSingleSignOnServiceUrlException extends ConfigE
     public function __construct()
     {
         parent::__construct(
-            'Missing SAML Identity Provider Single Sign On Service (sso) url config entry. Add this to your config.ini.php file to use ' .
-            'that url (The URL to submit SAML authentication requests to). ' .
-            '<br /><pre>[LoginSamlSSO]<br />samlIdentityProviderSingleSignOnServiceUrl = https://identity.provider.example.com/example/sso</pre>'
+            'SAML Identity Provider Single Sign On Service (sso) url',
+            'that url (The URL to submit SAML authentication requests to)',
+            'samlIdentityProviderSingleSignOnServiceUrl',
+            'https://identity.provider.example.com/example/sso'
         );
     }
 }

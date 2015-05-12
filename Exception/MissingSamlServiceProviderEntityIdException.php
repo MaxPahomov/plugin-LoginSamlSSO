@@ -23,11 +23,10 @@ class MissingSamlServiceProviderEntityIdException extends ConfigException
         $baseUrlWithProtocol = Url::getCurrentScheme() . '://' . Url::getHost();
 
         parent::__construct(
-            'Missing SAML Service Provider EntityId config entry. Add this to your config.ini.php file to use ' .
-            'that identifier (must be a URI). ' .
-            '<br /><pre>[LoginSamlSSO]<br />samlServiceProviderEntityId = ' .
-            sprintf('"%s"', $baseUrlWithProtocol) .
-            '</pre>'
+            'SAML Service Provider EntityId',
+            'that identifier (must be a URI)',
+            'samlServiceProviderEntityId',
+            sprintf('"%s"', $baseUrlWithProtocol)
         );
     }
 }

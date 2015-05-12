@@ -19,9 +19,10 @@ class MissingSamlIdentityProviderEntityIdException extends ConfigException
     public function __construct()
     {
         parent::__construct(
-            'Missing SAML Identity Provider EntityId config entry. Add this to your config.ini.php file to use ' .
-            'that identifier (must be a URI). ' .
-            "<br /><pre>[LoginSamlSSO]<br />samlIdentityProviderEntityId = https://identity.provider.example.com/example/entityid</pre>"
+            'SAML Identity Provider EntityId',
+            'that identifier (must be a URI)',
+            'samlIdentityProviderEntityId',
+            'https://identity.provider.example.com/example/entityid'
         );
     }
 }

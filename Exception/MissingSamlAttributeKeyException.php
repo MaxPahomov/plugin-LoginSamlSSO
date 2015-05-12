@@ -18,9 +18,10 @@ class MissingSamlAttributeKeyException extends ConfigException
     public function __construct()
     {
         parent::__construct(
-            'Missing saml attribute key config entry. Add this to your config.ini.php file to use ' .
-            'map IdP response properly. ' .
-            '<br /><pre>[LoginSamlSSO]<br />samlAttributeKey = employee_number</pre>'
+            'saml attribute key',
+            'map IdP response properly',
+            'samlAttributeKey',
+            'login'
         );
     }
 }

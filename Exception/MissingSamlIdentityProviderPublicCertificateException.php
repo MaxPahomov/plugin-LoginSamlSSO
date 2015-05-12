@@ -19,9 +19,10 @@ class MissingSamlIdentityProviderPublicCertificateException extends ConfigExcept
     public function __construct()
     {
         parent::__construct(
-            'Missing SAML Identity Provider Public Certificate config entry. Add this to your config.ini.php file to use ' .
-            '(The x509 certificate used to authenticate the request.). ' .
-            '<br /><pre>[LoginSamlSSO]<br />samlIdentityProviderPublicCertificate = </pre>'
+            'SAML Identity Provider Public Certificate',
+            'x509 certificate to authenticate the request',
+            'samlIdentityProviderPublicCertificate',
+            ''
         );
     }
 }

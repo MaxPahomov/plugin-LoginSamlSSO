@@ -19,11 +19,24 @@ use Piwik\Exception\Exception;
 abstract class ConfigException extends Exception
 {
     /**
-     * @param string $message
+     * @param string $entryName
+     * @param string $usage
+     * @param string $entryKey
+     * @param string$sampleEntryValue
      */
-    public function __construct($message)
+    public function __construct($entryName, $usage, $entryKey, $sampleEntryValue)
     {
-        parent::__construct($message);
+        parent::__construct(
+            sprintf(
+                'Missing %s config entry. Add this to your config.ini.php file to use %s. ' .
+                '<br /><pre>[LoginSamlSSO]<br />%s = %s</pre>',
+                $entryName,
+                $usage,
+                $entryKey,
+                $sampleEntryValue
+            )
+        );
+
         $this->setIsHtmlMessage();
     }
 }

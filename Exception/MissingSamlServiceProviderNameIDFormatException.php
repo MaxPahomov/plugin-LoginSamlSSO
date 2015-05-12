@@ -19,9 +19,10 @@ class MissingSamlServiceProviderNameIDFormatException extends ConfigException
     public function __construct()
     {
         parent::__construct(
-            'Missing SAML Service Provider NameID format to return the authentication token config entry. Add this to your config.ini.php file to use ' .
-            'entity as token format. ' .
-            '<br /><pre>[LoginSamlSSO]<br />samlServiceProviderNameIDFormat = urn:oasis:names:tc:SAML:2.0:nameid-format:entity</pre>'
+            'SAML Service Provider NameID format to return the authentication token',
+            'entity as token format',
+            'samlServiceProviderNameIDFormat',
+            'urn:oasis:names:tc:SAML:2.0:nameid-format:entity'
         );
     }
 }
