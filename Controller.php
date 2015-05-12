@@ -77,7 +77,7 @@ class Controller extends PluginController
         $view = new View('@LoginSamlSSO/configure');
         $this->setBasicVariablesView($view);
 
-        echo $view->render();
+        return $view->render();
     }
 
     public function getMetaData()
@@ -89,7 +89,7 @@ class Controller extends PluginController
         $settings = $this->samlProcessFactory->getSettings();
         $securityData = $settings->getSecurityData();
 
-        echo OneLogin_Saml2_Metadata::builder(
+        return OneLogin_Saml2_Metadata::builder(
             $settings->getSPData(),
             $securityData['authnRequestsSigned'],
             $securityData['wantAssertionsSigned']
