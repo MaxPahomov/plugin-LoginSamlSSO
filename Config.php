@@ -24,15 +24,21 @@ class Config
     private $scope;
 
     /**
-     * @param null|array $scope
+     * @param array $scope
      */
-    public function __construct($scope = null)
+    public function __construct($scope)
     {
-        if ($scope === null) {
-            $scope = PiwikConfig::getInstance()->LoginSamlSSO;
-        }
-
         $this->scope = $scope;
+    }
+
+    /**
+     * @return Config
+     */
+    public static function create()
+    {
+        return new Config(
+            PiwikConfig::getInstance()->LoginSamlSSO
+        );
     }
 
     /**

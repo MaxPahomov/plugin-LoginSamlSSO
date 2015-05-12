@@ -36,7 +36,7 @@ class Controller extends PluginController
 
         if ($samlProcessFactory === null) {
             $samlProcessFactory = new SamlProcess\SamlProcessFactory(
-                new Config()
+                Config::create()
             );
         }
 
