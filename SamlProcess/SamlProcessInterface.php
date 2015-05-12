@@ -7,8 +7,6 @@
  */
 namespace Piwik\Plugins\LoginSamlSSO\SamlProcess;
 
-use OneLogin_Saml2_Auth;
-
 /**
  * Interface SamlProcessInterface describe how to create Saml process object.
  * It introduce process method and login method.
@@ -18,12 +16,6 @@ use OneLogin_Saml2_Auth;
  */
 interface SamlProcessInterface
 {
-    /**
-     * @param OneLogin_Saml2_Auth $saml2_Auth
-     * @param SamlProcessAttributesInterface $samlProcessAttributes
-     */
-    public function __construct(OneLogin_Saml2_Auth $saml2_Auth, SamlProcessAttributesInterface $samlProcessAttributes);
-
     /**
      * Process Saml POST request and Saml Process Result object.
      *

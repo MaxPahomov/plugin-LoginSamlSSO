@@ -20,14 +20,6 @@ use Piwik\Plugins\Login\SessionInitializer;
 interface SamlProcessAttributesInterface
 {
     /**
-     * @param UserFromAttributesExtractorInterface $userFromAttributesExtractor
-     * @param Access $access
-     * @param SessionInitializer $sessionInitializer
-     */
-    public function __construct(UserFromAttributesExtractorInterface $userFromAttributesExtractor, Access $access,
-                                SessionInitializer $sessionInitializer);
-
-    /**
      * @param array $attributes
      * @param SamlProcessResultInterface $result
      * @return bool

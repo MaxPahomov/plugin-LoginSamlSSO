@@ -72,7 +72,7 @@ class SamlProcessFactory
     /**
      * This method create SamlProcess object.
      *
-     * @return SamlProcess
+     * @return SamlProcessInterface
      * @throws Exception\ConfigException
      */
     public function get()

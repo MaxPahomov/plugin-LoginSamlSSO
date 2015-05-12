@@ -21,12 +21,6 @@ use Piwik\Plugins\UsersManager\Model;
 interface UserFromAttributesExtractorInterface
 {
     /**
-     * @param Config $config
-     * @param Model $usersModel
-     */
-    public function __construct(Config $config, Model $usersModel);
-
-    /**
      * Fetch user from Piwik database based on Saml attributes and key from config.ini.php file.
      *
      * @param array $attributes
