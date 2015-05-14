@@ -13,9 +13,9 @@ use Piwik\Log;
 return array(
 
     'Piwik\Plugins\LoginSamlSSO\Logger' => DI\object('Monolog\Logger')
-        ->constructor('samlsso', DI\link('samlsso.log.handlers'), DI\link('log.processors')),
+        ->constructor('loginsamlsso', DI\link('loginsamlsso.log.handlers'), DI\link('log.processors')),
 
-    'samlsso.log.handlers' => DI\factory(function (ContainerInterface $c) {
+    'loginsamlsso.log.handlers' => DI\factory(function (ContainerInterface $c) {
         if ($c->has('ini.LoginSamlSSO.log_writers')) {
             $writerNames = $c->get('ini.LoginSamlSSO.log_writers');
         } else {
@@ -37,18 +37,18 @@ return array(
     }),
 
     'Piwik\Plugins\Monolog\Handler\FileHandler' => DI\object()
-        ->constructor(DI\link('samlsso.log.file.filename'), DI\link('samlsso.log.level'))
+        ->constructor(DI\link('loginsamlsso.log.file.filename'), DI\link('loginsamlsso.log.level'))
         ->method('setFormatter', DI\link('Piwik\Plugins\Monolog\Formatter\LineMessageFormatter')),
 
     'Piwik\Plugins\Monolog\Handler\DatabaseHandler' => DI\object()
-        ->constructor(DI\link('samlsso.log.level'))
+        ->constructor(DI\link('loginsamlsso.log.level'))
         ->method('setFormatter', DI\link('Piwik\Plugins\Monolog\Formatter\LineMessageFormatter')),
 
     'Piwik\Plugins\Monolog\Handler\WebNotificationHandler' => DI\object()
-        ->constructor(DI\link('samlsso.log.level'))
+        ->constructor(DI\link('loginsamlsso.log.level'))
         ->method('setFormatter', DI\link('Piwik\Plugins\Monolog\Formatter\LineMessageFormatter')),
 
-    'samlsso.log.level' => DI\factory(function (ContainerInterface $c) {
+    'loginsamlsso.log.level' => DI\factory(function (ContainerInterface $c) {
         if ($c->has('ini.LoginSamlSSO.log_level')) {
             $level = strtoupper($c->get('ini.LoginSamlSSO.log_level'));
             if (!empty($level) && defined('Piwik\Log::'.strtoupper($level))) {
@@ -58,7 +58,7 @@ return array(
         return Logger::WARNING;
     }),
 
-    'samlsso.log.file.filename' => DI\factory(function (ContainerInterface $c) {
+    'loginsamlsso.log.file.filename' => DI\factory(function (ContainerInterface $c) {
         if ($c->has('ini.LoginSamlSSO.logger_file_path')) {
             $logPath = $c->get('ini.LoginSamlSSO.logger_file_path');
 
@@ -85,9 +85,9 @@ return array(
     }),
 
     'Piwik\Plugins\Monolog\Formatter\LineMessageFormatter' => DI\object()
-        ->constructor(DI\link('samlsso.log.format')),
+        ->constructor(DI\link('loginsamlsso.log.format')),
 
-    'samlsso.log.format' => DI\factory(function (ContainerInterface $c) {
+    'loginsamlsso.log.format' => DI\factory(function (ContainerInterface $c) {
         if ($c->has('ini.LoginSamlSSO.string_message_format')) {
             return $c->get('ini.LoginSamlSSO.string_message_format');
         }
