@@ -53,7 +53,7 @@ class SamlSettings
         }
 
         if (is_null($config)) {
-            $config = new Config();
+            $config = Config::create();
         }
         // @codeCoverageIgnoreEnd
 
