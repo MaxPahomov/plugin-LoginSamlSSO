@@ -28,7 +28,7 @@ class SamlProcessFactory
     private $config;
 
     /**
-     * @var SamlProcessAttributesInterface
+     * @var SamlProcessAttributes
      */
     private $samlProcessAttributes;
 
@@ -39,10 +39,10 @@ class SamlProcessFactory
 
     /**
      * @param Config $config
-     * @param SamlProcessAttributesInterface $samlProcessAttributes
+     * @param SamlProcessAttributes $samlProcessAttributes
      * @param null|string $currentUrlWithoutQueryString
      */
-    public function __construct(Config $config, SamlProcessAttributesInterface $samlProcessAttributes = null,
+    public function __construct(Config $config, SamlProcessAttributes $samlProcessAttributes = null,
                                 $currentUrlWithoutQueryString = null)
     {
         $this->config = $config;
@@ -72,7 +72,7 @@ class SamlProcessFactory
     /**
      * This method create SamlProcess object.
      *
-     * @return SamlProcessInterface
+     * @return SamlProcess
      * @throws Exception\ConfigException
      */
     public function get()

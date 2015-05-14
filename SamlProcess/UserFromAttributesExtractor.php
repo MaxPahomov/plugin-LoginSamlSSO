@@ -17,7 +17,7 @@ use Piwik\Plugins\UsersManager\Model;
  * @codeCoverageIgnore
  * @package Piwik\plugins\LoginSamlSSO\SamlProcess
  */
-class UserFromAttributesExtractor implements UserFromAttributesExtractorInterface
+class UserFromAttributesExtractor
 {
     /**
      * @var Config

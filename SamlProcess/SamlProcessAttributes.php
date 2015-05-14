@@ -19,7 +19,7 @@ use Psr\Log\LoggerInterface;
  *
  * @package Piwik\Plugins\LoginSamlSSO\SamlProcess
  */
-class SamlProcessAttributes implements SamlProcessAttributesInterface
+class SamlProcessAttributes
 {
     /**
      * @var Access
@@ -32,7 +32,7 @@ class SamlProcessAttributes implements SamlProcessAttributesInterface
     private $sessionInitializer;
 
     /**
-     * @var UserFromAttributesExtractorInterface
+     * @var UserFromAttributesExtractor
      */
     private $userFromAttributesExtractor;
 
@@ -47,13 +47,13 @@ class SamlProcessAttributes implements SamlProcessAttributesInterface
     private $auth;
 
     /**
-     * @param UserFromAttributesExtractorInterface $userFromAttributesExtractor
+     * @param UserFromAttributesExtractor $userFromAttributesExtractor
      * @param Access $access
      * @param SessionInitializer $sessionInitializer
      * @param Auth $auth
      * @param LoggerInterface $logger
      */
-    public function __construct(UserFromAttributesExtractorInterface $userFromAttributesExtractor, Access $access,
+    public function __construct(UserFromAttributesExtractor $userFromAttributesExtractor, Access $access,
                                 SessionInitializer $sessionInitializer, Auth $auth = null,
                                 LoggerInterface $logger = null)
     {
@@ -79,10 +79,10 @@ class SamlProcessAttributes implements SamlProcessAttributesInterface
      * This method process attributes into user and authenticate user if has been found in Piwik database.
      *
      * @param array $attributes
-     * @param SamlProcessResultInterface $result
+     * @param SamlProcessResult $result
      * @return bool
      */
-    public function process(array $attributes, SamlProcessResultInterface $result)
+    public function process(array $attributes, SamlProcessResult $result)
     {
         $user = $this->userFromAttributesExtractor->getUserFromAttributes($attributes);
 

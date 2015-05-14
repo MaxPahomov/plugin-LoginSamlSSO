@@ -14,7 +14,7 @@ use OneLogin_Saml2_Error;
 use PHPUnit_Framework_MockObject_MockObject;
 use PHPUnit_Framework_TestCase;
 use Piwik\Plugins\LoginSamlSSO\SamlProcess\SamlProcess;
-use Piwik\Plugins\LoginSamlSSO\SamlProcess\SamlProcessAttributesInterface;
+use Piwik\Plugins\LoginSamlSSO\SamlProcess\SamlProcessAttributes;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -326,11 +326,11 @@ class SamlProcessTest extends PHPUnit_Framework_TestCase
 
     /**
      * @param array $methods
-     * @return PHPUnit_Framework_MockObject_MockObject|SamlProcessAttributesInterface
+     * @return PHPUnit_Framework_MockObject_MockObject|SamlProcessAttributes
      */
     protected function getProcessAttributesMock($methods = array())
     {
-        $builder = $this->getMockBuilder('\Piwik\Plugins\LoginSamlSSO\SamlProcess\SamlProcessAttributesInterface')
+        $builder = $this->getMockBuilder('\Piwik\Plugins\LoginSamlSSO\SamlProcess\SamlProcessAttributes')
             ->disableOriginalConstructor();
 
         if (!empty($methods)) {

@@ -13,7 +13,7 @@ namespace Piwik\Plugins\LoginSamlSSO\SamlProcess;
  *
  * @package Piwik\Plugins\LoginSamlSSO\SamlProcess
  */
-class SamlProcessResult implements SamlProcessResultInterface
+class SamlProcessResult
 {
     /**
      * @var string

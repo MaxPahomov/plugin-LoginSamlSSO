@@ -20,7 +20,7 @@ use Psr\Log\LoggerInterface;
  *
  * @package Piwik\Plugins\LoginSamlSSO\SamlProcess
  */
-class SamlProcess implements SamlProcessInterface
+class SamlProcess
 {
     /**
      * @var OneLogin_Saml2_Auth
@@ -28,7 +28,7 @@ class SamlProcess implements SamlProcessInterface
     private $auth;
 
     /**
-     * @var SamlProcessAttributesInterface
+     * @var SamlProcessAttributes
      */
     private $samlProcessAttributes;
 
@@ -44,11 +44,11 @@ class SamlProcess implements SamlProcessInterface
 
     /**
      * @param OneLogin_Saml2_Auth $auth
-     * @param SamlProcessAttributesInterface $samlProcessAttributes
+     * @param SamlProcessAttributes $samlProcessAttributes
      * @param LoggerInterface $logger
      * @param null $currentUrlWithoutQueryString
      */
-    public function __construct(OneLogin_Saml2_Auth $auth, SamlProcessAttributesInterface $samlProcessAttributes,
+    public function __construct(OneLogin_Saml2_Auth $auth, SamlProcessAttributes $samlProcessAttributes,
                                 LoggerInterface $logger = null, $currentUrlWithoutQueryString = null)
     {
         if ($logger === null) {
@@ -66,7 +66,7 @@ class SamlProcess implements SamlProcessInterface
      * It decode Saml request into xml, parse xml tree into, confirm that user is authenticated in SSO and process
      * result with `SamlProcessAttributes` object.
      *
-     * @return SamlProcessResultInterface
+     * @return SamlProcessResult
      */
     public function process()
     {
