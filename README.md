@@ -12,7 +12,7 @@
 
 ### Requirements:
 1. php in version at least 5.3
-2. Piwik in version at least 2.12.0 (I propose 2.12.1)
+2. We recommend to use the latest Piwik version.
 
 ### Build steps:
 1. Copy code of plugin into plugins/LoginSamlSSO directory in Piwik.
@@ -20,7 +20,7 @@
 3. Download composer.phar (curl -sS https://getcomposer.org/installer | php)
 4. Run composer install command. (php composer.phar install)
 
-### Insallation steps
+### Installation steps
 1. Login as a superuser
 2. On the _Manager > Plugins_ admin page, enable the LoginSamlSSO plugin
 3. Navigate to the _Settings > Configure LoginSamlSSO_ page
