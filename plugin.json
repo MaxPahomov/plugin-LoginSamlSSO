@@ -1,26 +1,31 @@
 {
- "name": "LoginSamlSSO",
- "version": "1.0.0",
- "description": "Plugin is sponsored by InfoZen. InfoZen contributed to the requirements and design of this plugin",
- "theme": false,
- "require": {
+  "name": "LoginSamlSSO",
+  "version": "1.0.0",
+  "description": "Plugin is sponsored by InfoZen. InfoZen contributed to the requirements and design of this plugin",
+  "theme": false,
+  "require": {
     "piwik": ">=2.11.2"
- },
- "authors": [
-     {
-         "name": "Marcin Czołnowski",
-         "email": "marcin@piwik.pro",
-         "homepage": "http://piwik.pro"
-     },
-     {
-         "name": "Krzysztof Kopacz",
-         "email": "k.kopacz@clearcode.cc",
-         "homepage": "http://clearcode.cc"
-     },
-     {
-         "name": "Mateusz Jonak",
-         "email": "m.jonak@clearcode.cc",
-         "homepage": "http://clearcode.cc"
-     }
- ]
+  },
+  "authors": [
+    {
+      "name": "Marcin Czołnowski",
+      "email": "marcin@piwik.pro",
+      "homepage": "http://piwik.pro"
+    },
+    {
+      "name": "Krzysztof Kopacz",
+      "email": "k.kopacz@clearcode.cc",
+      "homepage": "http://clearcode.cc"
+    },
+    {
+      "name": "Mateusz Jonak",
+      "email": "m.jonak@clearcode.cc",
+      "homepage": "http://clearcode.cc"
+    },
+    {
+      "name": "Piwik PRO",
+      "email": "contact@piwik.pro",
+      "homepage": "http://piwik.pro"
+    }
+  ]
 }
