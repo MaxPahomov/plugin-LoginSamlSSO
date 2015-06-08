@@ -1,0 +1,25 @@
+{
+  "LoginSamlSSO" : {
+    "Title": "Saml Configuration",
+    "ConfigureMenu": "Saml Configuration",
+    "Description": "Here you can change the settings for Saml SSO Plugin.",
+    "Header": "Saml SSO Configuration Form",
+    "SaveButton": "Save Configuration",
+    "HelpSamlAttributeKey": "Name of attribute from <Response> which plugin should use as user login.",
+    "HelpSamlServiceProviderEntityId": "Identifier of the SP entity. (must be a URI)",
+    "HelpSamlServiceProviderNameIDFormat": "Specifies the constraints on the name identifier to be used to represent the requested subject.",
+    "HelpSamlServiceProviderAssertionConsumerServiceUrl": "URL Location where the <Response> from the IdP will be returned. This plugin supports endpoint for the HTTP-POST binding only.",
+    "HelpSamlServiceProviderPublicCertificate": "Absolute path to public x509 certificate of the SP.",
+    "HelpSamlServiceProviderPrivateKey": "Absolute path to private key of the SP.",
+    "HelpSamlIdentityProviderEntityId": "Identifier of the IdP entity. (must be a URI)",
+    "HelpSamlIdentityProviderSingleSignOnServiceUrl": "SSO endpoint info of the IdP. (Authentication Request protocol) URL Target of the IdP where the Authentication Request Message will be sent.",
+    "HelpSamlIdentityProviderPublicCertificate": "Absolute path to public x509 certificate of the IdP.",
+    "HelpSamlIdentityProviderPrivateKey": "Absolute path to private key of the IdP.",
+    "HelpSamlSecurityAuthnRequestsSigned": "Indicates whether the <samlp:AuthnRequest> messages sent by this SP will be signed.",
+    "HelpSamlSecuritySignMetadata": "Sign the Metadata.",
+    "HelpSamlSecurityWantMessagesSigned": "Indicates a requirement for the <samlp:Response> elements received by this SP to be signed.",
+    "HelpSamlSecurityWantAssertionsSigned": "Indicates a requirement for the <saml:Assertion> elements received by this SP to be signed.",
+    "HelpSamlSecurityWantNameIdEncrypted": "Indicates a requirement for the NameID received by this SP to be encrypted.",
+    "HelpSamlLogLevel": "Level for logger. Available levels: error, warning, info, debug. (in order of importance, default: warning)"
+  }
+}
