@@ -9,7 +9,6 @@
 use Interop\Container\ContainerInterface;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
-use Piwik\Log;
 
 return array(
 
@@ -30,37 +29,23 @@ return array(
 
     'loginsamlsso.log.level' => DI\factory(function (ContainerInterface $c) {
         if ($c->has('ini.LoginSamlSSO.log_level')) {
-            $level = strtoupper($c->get('ini.LoginSamlSSO.log_level'));
-            if (!empty($level) && defined('Piwik\Log::'.strtoupper($level))) {
-                return Log::getMonologLevel(constant('Piwik\Log::'.strtoupper($level)));
-            }
+            $level = $c->get('ini.LoginSamlSSO.log_level');
+            return constant('Monolog\Logger::' . strtoupper($level));
         }
         return Logger::WARNING;
     }),
 
-    'loginsamlsso.log.file.filename' => DI\factory(function (ContainerInterface $c) {
+    'loginsamlsso.log.filename' => DI\factory(function (ContainerInterface $c) {
         if ($c->has('ini.LoginSamlSSO.logger_file_path')) {
-            $logPath = $c->get('ini.LoginSamlSSO.logger_file_path');
-
+            $file = $c->get('ini.LoginSamlSSO.logger_file_path');
             // Absolute path
-            if (strpos($logPath, '/') === 0) {
-                return $logPath;
+            if (strpos($file, '/') === 0) {
+                return $file;
             }
-
-            // Remove 'tmp/' at the beginning
-            if (strpos($logPath, 'tmp/') === 0) {
-                $logPath = substr($logPath, strlen('tmp'));
-            }
-        } else {
-            // Default log file
-            $logPath = '/logs/login-saml-sso.log';
+            // Relative to Piwik root
+            return PIWIK_INCLUDE_PATH . '/' . $file;
         }
-
-        $logPath = $c->get('path.tmp') . $logPath;
-        if (is_dir($logPath)) {
-            $logPath .= '/login-saml-sso.log';
-        }
-
-        return $logPath;
+        // Default log file
+        return $c->get('path.tmp') . '/logs/login-saml-sso.log';
     })
 );
