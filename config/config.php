@@ -47,5 +47,19 @@ return array(
         }
         // Default log file
         return $c->get('path.tmp') . '/logs/login-saml-sso.log';
+    }),
+	
+	'loginsamlsso.log.file.filename' => DI\factory(function (ContainerInterface $c) {
+        if ($c->has('ini.LoginSamlSSO.logger_file_path')) {
+            $file = $c->get('ini.LoginSamlSSO.logger_file_path');
+            // Absolute path
+            if (strpos($file, '/') === 0) {
+                return $file;
+            }
+            // Relative to Piwik root
+            return PIWIK_INCLUDE_PATH . '/' . $file;
+        }
+        // Default log file
+        return $c->get('path.tmp') . '/logs/login-saml-sso.log';
     })
 );
