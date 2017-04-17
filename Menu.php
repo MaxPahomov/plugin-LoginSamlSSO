@@ -22,7 +22,7 @@ class Menu extends PluginMenu
     public function configureAdminMenu(MenuAdmin $menu)
     {
         if (Access::getInstance()->hasSuperUserAccess()) {
-            $menu->addSettingsItem(
+            $menu->addSystemItem(
                 $menuName = 'LoginSamlSSO_ConfigureMenu',
                 $url = array(
                     'module' => 'LoginSamlSSO',
